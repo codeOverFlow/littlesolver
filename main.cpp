@@ -36,6 +36,6 @@ int main ( int argc, char *argv[] )
     AssignProblem p;
     Backtracking b;
     Node node = p.initialNode("");
-    b.solve(p, node);
+    std::cout << std::endl << "res: " << b.solve(p, node) << std::endl;
     return EXIT_SUCCESS;
 }				/* ----------  end of function main  ---------- */

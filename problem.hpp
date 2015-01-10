@@ -19,14 +19,27 @@ namespace lslv {
                     std::cout << i << "    ";
                 std::cout << std::endl;
             }
+
+	    virtual void printSolution(Node const& node) const {
+			std::cout << "Solution found: ";
+			for (Domain d : node.dom()) {
+				for (int i(0); i < d.dom().size(); i++) {
+					if(d.dom().at(i)) {
+						std::cout << i << "   ";
+						break;
+					}
+				}
+			}
+			std::cout << std::endl;
+	    }
             
-            virtual bool all_diff(std::vector<int> assignment) const {
+            virtual inline bool all_diff(std::vector<int> assignment) const {
                 std::stable_sort(assignment.begin(), assignment.end());
-                std::cout << (std::adjacent_find(assignment.begin(), assignment.end()) == assignment.end() ? true : false) << std::endl;
+                //std::cout << (std::adjacent_find(assignment.begin(), assignment.end()) == assignment.end() ? true : false) << std::endl;
                 return std::adjacent_find(assignment.begin(), assignment.end()) == assignment.end() ? true : false;
             }
 
-            virtual bool all_assign(std::vector<int> const& assignment, int n) const {
+            virtual inline bool all_assign(std::vector<int> const& assignment, int n) const {
                 return assignment.size() == (unsigned int)n;
             }
     };
