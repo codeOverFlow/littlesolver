@@ -38,13 +38,13 @@ namespace lslv {
             /*
              * return the domain
              */
-            inline std::vector<bool> dom() const { return m_dom; }
+            inline std::vector<bool>& dom() { return m_dom; }
             /*
              * flip a bit in the vector
              * param: n the index of the bit to flip
              */
-            inline void flip(int n) { m_dom.at(n) = !m_dom.at(n); }
-            bool egal(Domain const& d) const;
+            inline void flip(int n) { m_dom.at(n) = !(m_dom.at(n)); }
+            bool egal(Domain& d) const;
             int positive_bits() const;
 
         private:

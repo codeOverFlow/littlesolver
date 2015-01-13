@@ -8,7 +8,7 @@ namespace lslv {
     class Node {
         public:
             Node(int dom_size, int nb_var);
-            std::vector<Domain> dom() const;
+            inline std::vector<Domain>& dom() { return m_dom; }
             void addDom(Domain const& dom);
 
         private:

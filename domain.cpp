@@ -32,7 +32,7 @@ Domain::Domain(int dom_size, std::vector<bool> bool_vec) {
 
 Domain::~Domain() {}
 
-bool Domain::egal(Domain const& d) const {
+bool Domain::egal(Domain& d) const {
     bool res(true); 
     for (int i(0); i < m_dom.size(); i++) {
         if(m_dom.at(i) != d.dom().at(i)) {

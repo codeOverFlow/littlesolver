@@ -24,8 +24,6 @@ Node::Node(int dom_size, int nb_var) {
     m_dom.reserve(nb_var);
 }
 
-std::vector<Domain> Node::dom() const { return m_dom; }
-
 void Node::addDom(Domain const& dom) {
     m_dom.push_back(dom);
 }

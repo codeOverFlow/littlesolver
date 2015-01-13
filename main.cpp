@@ -37,5 +37,9 @@ int main ( int argc, char *argv[] )
     Backtracking b;
     Node node = p.initialNode("");
     std::cout << std::endl << "res: " << b.solve(p, node) << std::endl;
+    /*/std::cout << node.dom().at(0).dom().at(0) << std::endl;
+    node.dom().at(0).flip(0);
+    std::cout << node.dom().at(0).dom().at(0) << std::endl;
+    //*/
     return EXIT_SUCCESS;
 }				/* ----------  end of function main  ---------- */

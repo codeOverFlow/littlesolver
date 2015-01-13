@@ -20,15 +20,16 @@ namespace lslv {
                 std::cout << std::endl;
             }
 
-	    virtual void printSolution(Node const& node) const {
-			std::cout << "Solution found: ";
+	    virtual void printSolution(Node& node) const {
+			std::cout << "Solution of the node: ";
 			for (Domain d : node.dom()) {
+				std::cout << "(";
 				for (int i(0); i < d.dom().size(); i++) {
 					if(d.dom().at(i)) {
 						std::cout << i << "   ";
-						break;
 					}
 				}
+				std::cout << ") ";
 			}
 			std::cout << std::endl;
 	    }
