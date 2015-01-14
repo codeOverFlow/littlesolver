@@ -25,6 +25,6 @@ namespace lslv {
         public:
             virtual int solve(Problem& p, Node& node) = 0;
         protected:
-            virtual void branch(Problem& p, Node& node, std::vector<int> assignment, int nb_iter, int& cpt) = 0;
+            virtual void branch(Problem& p, Node& node, std::vector<int> assignment, int& cpt, int num_dom = 0) = 0;
     };
 }
