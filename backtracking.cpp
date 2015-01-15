@@ -64,7 +64,7 @@ void Backtracking::branch(Problem& p, Node& node, std::vector<int> assignment, i
 
 
     for (int i(0); i < node.dom().at(d).dom().size(); i++) {
-    //std::cout << "num_dom: " << num_dom << std::endl;
+	//std::cout << "num_dom: " << num_dom << std::endl;
 //         std::cout << "cpt: " << cpt << std::endl;
         if (node.dom().at(d).dom().at(i)) {
 // 		d = num_dom;
@@ -103,7 +103,7 @@ void Backtracking::branch(Problem& p, Node& node, std::vector<int> assignment, i
                 //d = node.dom().size();
                 //backtracking(p, node, cpt, 0, assignment);
                 //node.dom().at(d).flip(i);
-                break;
+//                 break;
             }
             else {
                 std::cout << "pop_back: " << assignment.at(assignment.size()-1) << std::endl;
