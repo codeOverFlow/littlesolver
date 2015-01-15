@@ -18,20 +18,15 @@
 
 #pragma once
 
-#include <vector>
-#include <algorithm>
-#include <functional>
-#include <numeric>
-
 #include "problem.hpp"
 
 namespace lslv {
     class AssignProblem : public Problem {
         public:
-            AssignProblem();
-            ~AssignProblem();
+            inline AssignProblem() {}
+            inline ~AssignProblem() {}
 
-            virtual Node initialNode(std::string const& filename) const;
+//            virtual inline Node initialNode(std::string const& filename) const{AssignProblem::initialNode(filename);}
 
             virtual Proof testSat(std::vector<int> const& assign, int n) const;
     };

@@ -20,19 +20,6 @@
 
 using namespace lslv;
 
-AssignProblem::AssignProblem() {}
-
-AssignProblem::~AssignProblem() {}
-
-Node AssignProblem::initialNode(std::string const& filename) const {
-	Node root(5,4);
-	root.addDom(Domain(5, {true, false, true, false, true}));
-	root.addDom(Domain(5, {true, true, false, true, true}));
-	root.addDom(Domain(5, {false, true, true, false, false}));
-	root.addDom(Domain(5, {true, true, false, true, true}));
-	return root;
-}
-
 Proof AssignProblem::testSat(std::vector<int> const& assign, int n) const {
 	Proof sat = Proof::MIDDLE;
 	if (all_assign(assign, n) && all_diff(assign))

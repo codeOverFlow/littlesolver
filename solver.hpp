@@ -18,23 +18,25 @@
 
 #pragma once
 
-#include "algorithm.hpp"
+#include "algorithmList.hpp"
+#include "problemList.hpp"
 
 namespace lslv {
     class Solver {
         public:
-            Solver(Algorithm algo, Problem problem) : m_algo(algo), m_problem(problemlist)
-            ~Solver() {}
+            inline Solver(Problem& problem, Algorithm& algo) : m_problem(problem), m_algo(algo) {}
+            inline ~Solver() {}
             
-            void solve(){
-                // TODO: implements it
+            inline int solve(std::string const& data_filename){
+		    Node n = m_problem.initialNode(data_filename);
+                return m_algo.solve(m_problem, n); 
             }
 
-            void setAlgorithm(Algorithm algo) { m_algo = algo; }
+            inline void setAlgorithm(Algorithm& algo) { m_algo = algo; }
 
-            void setProblem(Problem problem) { m_problem = problem; }
+            inline void setProblem(Problem& problem) { m_problem = problem; }
         private:
-            Algorithm m_algo;
-            Problem m_problem;
+            Algorithm& m_algo;
+            Problem& m_problem;
     };
 };

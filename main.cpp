@@ -20,8 +20,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "assignproblem.hpp"
-#include "backtracking.hpp"
+#include "solver.hpp"
 
 using namespace lslv;
 
@@ -35,12 +34,9 @@ int main ( int argc, char *argv[] )
 {
     AssignProblem p;
     Backtracking b;
-    Node node = p.initialNode("");
+    Solver s(p,b);
     
-    std::cout << std::endl << "res: " << b.solve(p, node) << " node(s)" << std::endl;
-    /*/std::cout << node.dom().at(0).dom().at(0) << std::endl;
-    node.dom().at(0).flip(0);
-    std::cout << node.dom().at(0).dom().at(0) << std::endl;
-    //*/
+    std::cout << std::endl << "res: " << s.solve("data/data") << " solution(s)" << std::endl;
+
     return EXIT_SUCCESS;
 }				/* ----------  end of function main  ---------- */
