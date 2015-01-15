@@ -42,7 +42,8 @@ int Backtracking::solve(Problem& p, Node& node) {
 }
 
 int Backtracking::backtracking(Problem& p, Node& node, int& cpt, std::vector<int> assignment, int num_dom) {
-    if (assignment.size() == node.dom().size()) {
+    std::cout << "Backtracking" << std::endl;
+	if (assignment.size() == node.dom().size()) {
         std::cout << "retour" << std::endl;
         //p.printSolution(assignment);
     }
@@ -58,14 +59,15 @@ int nb_nodes(0); // count the number of nodes
 void Backtracking::branch(Problem& p, Node& node, std::vector<int> assignment, int& cpt, int num_dom) {
     //for (int d(nb_iter); d < node.dom().size(); d++) {
     int d(num_dom);
-    if (assignment.size() > d)
-        assignment.pop_back();
-  
-    std::cout << "num_dom: " << num_dom << std::endl;
+//     if (assignment.size() > d)
+//         assignment.pop_back();
+
 
     for (int i(0); i < node.dom().at(d).dom().size(); i++) {
-        std::cout << "cpt: " << cpt << std::endl;
+    //std::cout << "num_dom: " << num_dom << std::endl;
+//         std::cout << "cpt: " << cpt << std::endl;
         if (node.dom().at(d).dom().at(i)) {
+// 		d = num_dom;
             std::cout << "node number: " << nb_nodes++ << std::endl;
             p.printSolution(node);
             std::cout << "domain: " << d << std::endl;
@@ -75,16 +77,18 @@ void Backtracking::branch(Problem& p, Node& node, std::vector<int> assignment, i
                 assignment.at(num_dom) = i;
             else
                 assignment.push_back(i);
+	    
             //node.dom().at(d).flip(i);
             p.printSolution(node);
-            std::cout << "test sat" << std::endl;
+//             std::cout << "test sat" << std::endl;
             Proof proof = p.testSat(assignment, node.dom().size());
             if (proof == Proof::MIDDLE) {
                 std::cout << "middle node" << std::endl;
                 p.printSolution(assignment);
                 std::cout << std::endl << std::endl;
 
-                backtracking(p, node, cpt, assignment, ++num_dom);
+// 		num_dom++;
+                backtracking(p, node, cpt, assignment, num_dom+1);
                 //break;
                 //node.dom().at(d).flip(i);
                 assignment.pop_back();

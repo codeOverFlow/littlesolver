@@ -1,4 +1,4 @@
-.SUFFIXES: clear
+.SUFFIXES: clean
 .PHONY:
 OPTION = -std=c++11
 OPTI = -O2 -Os -s # pour debugger commenter les valeurs
@@ -8,6 +8,7 @@ DEBUG =# -g # pour debugger decommenter les valeurs
 
 all: main.o assignproblem.o backtracking.o domain.o node.o
 	g++ ${OPTION} ${OPTI} ${INCLUDE} main.o assignproblem.o backtracking.o domain.o node.o -o ${EXECNAME}
+	rm *.o
 
 main.o:
 	g++ -c ${OPTION} ${OPTI} main.cpp
@@ -24,5 +25,5 @@ domain.o:
 node.o:
 	g++ -c ${OPTION} ${OPTI} node.cpp
 
-clear:
+clean:
 	rm *.o
