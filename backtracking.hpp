@@ -30,5 +30,6 @@ namespace lslv {
         protected:
             int backtracking(Problem& p, Node& node, int& cpt, std::vector<int> assignment = {}, int num_dom = 0);
             virtual void branch(Problem& p, Node& node, std::vector<int> assignment, int& cpt, int num_dom = 0);
+	    static int nb_nodes;
     };
 };

@@ -26,10 +26,10 @@ AssignProblem::~AssignProblem() {}
 
 Node AssignProblem::initialNode(std::string const& filename) const {
 	Node root(5,4);
-	root.addDom(Domain(5, {true, false, false, false, false}));
-	root.addDom(Domain(5, {false, true, false, true, true}));
-	root.addDom(Domain(5, {false, false, true, false, false}));
-	root.addDom(Domain(5, {false, true, false, true, true}));
+	root.addDom(Domain(5, {true, false, true, false, true}));
+	root.addDom(Domain(5, {true, true, false, true, true}));
+	root.addDom(Domain(5, {false, true, true, false, false}));
+	root.addDom(Domain(5, {true, true, false, true, true}));
 	return root;
 }
 
