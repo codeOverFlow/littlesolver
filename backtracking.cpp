@@ -60,23 +60,25 @@ void Backtracking::branch(Problem& p, Node& node, std::vector<int> assignment, i
 	int d(num_dom);
 	for (int i(0); i < node.dom().at(d).dom().size(); i++) {
 		if (node.dom().at(d).dom().at(i)) {
-			nb_nodes++;
 			// push the new assignment
 			if (assignment.size() > num_dom)
-				assignment.at(num_dom) = i;
+				assignment.at(num_dom) = i+1;
 			else
-				assignment.push_back(i);
+				assignment.push_back(i+1);
 			
 			Proof proof = p.testSat(assignment, node.dom().size());
 			if (proof == Proof::MIDDLE) {
+				nb_nodes++;
+				//p.printSolution(assignment);
 				backtracking(p, node, cpt, assignment, num_dom+1);
 				assignment.pop_back();
 			}
 			else if (proof == Proof::SUCCESS) {
 				cpt++;
-				p.printDomains(node);
-				p.printSolution(assignment);
-				std::cout << std::endl;
+				nb_nodes++;
+				//p.printDomains(node);
+				//p.printSolution(assignment);
+				//std::cout << std::endl;
 			}
 			else {
 				assignment.pop_back();
