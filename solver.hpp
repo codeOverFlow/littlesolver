@@ -20,14 +20,16 @@
 
 #include "algorithmList.hpp"
 #include "problemList.hpp"
+#include <iostream>
 
 namespace lslv {
     class Solver {
         public:
-            inline Solver(Problem& problem, Algorithm& algo) : m_problem(problem), m_algo(algo) {}
+            inline Solver(Problem& problem, Algorithm& algo) : m_algo(algo), m_problem(problem) {}
             inline ~Solver() {}
             
             inline int solve(std::string const& data_filename){
+		    std::cout << "bite" << std::endl; 
 		    Node n = m_problem.initialNode(data_filename);
                 return m_algo.solve(m_problem, n); 
             }

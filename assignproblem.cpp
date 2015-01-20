@@ -22,9 +22,10 @@ using namespace lslv;
 
 Proof AssignProblem::testSat(std::vector<int> const& assign, int n) const {
 	Proof sat = Proof::MIDDLE;
-	if (all_assign(assign, n) && all_diff(assign))
+	bool diff = all_diff(assign);
+	if (all_assign(assign, n) && diff)
 		sat = Proof::SUCCESS;
-	else if (!all_diff(assign))
+	else if (!diff)
 		sat = Proof::FAILURE;
 	return sat;
 }

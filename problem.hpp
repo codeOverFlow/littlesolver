@@ -48,7 +48,9 @@ namespace lslv {
 			}
 			return n;
 		}
+		
 		virtual Proof testSat(std::vector<int> const& assignment, int n) const = 0;
+		
 		virtual inline void printSolution(std::vector<int> const& assignment) const {
 			std::cout << "Solution found: ";
 			for (auto i : assignment)
@@ -71,13 +73,24 @@ namespace lslv {
 		}
 		
 		virtual inline bool all_diff(std::vector<int> assignment) const {
-			std::stable_sort(assignment.begin(), assignment.end());
-			//std::cout << (std::adjacent_find(assignment.begin(), assignment.end()) == assignment.end() ? true : false) << std::endl;
-			return std::adjacent_find(assignment.begin(), assignment.end()) == assignment.end() ? true : false;
+			std::vector<int> tmp;
+			for (auto i : assignment) {
+				if (i != -1)
+					tmp.push_back(i);
+			}
+			std::stable_sort(tmp.begin(), tmp.end());
+			return std::adjacent_find(tmp.begin(), tmp.end()) == tmp.end();
 		}
 		
 		virtual inline bool all_assign(std::vector<int> const& assignment, int n) const {
-			return assignment.size() == (unsigned int)n;
+			bool b(true);
+			for (auto i : assignment) {
+				if (i == -1) {
+					b = false;
+					break;
+				}
+			}
+			return (assignment.size() == (unsigned int)n) && b;
 		}
 	};
 }

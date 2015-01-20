@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  queens.hpp
+ *       Filename:  backtracking.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  06/01/2015 18:17:48
+ *        Created:  08/01/2015 12:45:47
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -18,16 +18,17 @@
 
 #pragma once
 
-#include "problem.hpp"
+#include "algorithm.hpp"
 
 namespace lslv {
-    class AssignProblem : public Problem {
-        public:
-            inline AssignProblem() {}
-            inline ~AssignProblem() {}
-
-//            virtual inline Node initialNode(std::string const& filename) const{AssignProblem::initialNode(filename);}
-
-            virtual Proof testSat(std::vector<int> const& assign, int n) const;
-    };
-}
+	class LocalSearch : public Algorithm {
+	public:
+		inline LocalSearch() {}
+		inline ~LocalSearch() {}
+		virtual int solve(Problem& p, Node& node);
+		
+	private:
+		void createInitialSol(Node& node);
+		void permutSol(Node& node);
+	};
+};

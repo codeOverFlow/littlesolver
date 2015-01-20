@@ -28,8 +28,8 @@ namespace lslv {
 		virtual int solve(Problem& p, Node& node);
 		
 	protected:
-		int backtracking(Problem& p, Node& node, int& cpt, std::vector<int> assignment = {}, int num_dom = 0);
-		virtual void branch(Problem& p, Node& node, std::vector<int> assignment, int& cpt, int num_dom = 0);
+		int backtracking(Problem& p, Node& node, int& cpt, std::vector<int> assignment = {}, std::vector<int> not_assigned = {});
+		virtual void branch(Problem& p, Node& node, std::vector<int> assignment, int& cpt, std::vector<int> not_assigned = {});
 		int nb_nodes;
 	};
 };
