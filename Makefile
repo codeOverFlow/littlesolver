@@ -7,8 +7,8 @@ EXECNAME = appli
 COMPIL = clang++
 DEBUG = #-g # pour debugger decommenter les valeurs
 
-all: main.o assignproblem.o backtracking.o domain.o node.o queens.o
-	${COMPIL} ${OPTION} ${OPTI} ${INCLUDE} main.o assignproblem.o backtracking.o domain.o node.o queens.o -o ${EXECNAME}
+all: main.o assignproblem.o backtracking.o domain.o node.o queens.o localsearch.o
+	${COMPIL} ${OPTION} ${OPTI} ${INCLUDE} main.o assignproblem.o backtracking.o domain.o node.o queens.o  localsearch.o -o ${EXECNAME}
 	rm *.o
 
 main.o:
@@ -28,6 +28,9 @@ node.o:
 
 queens.o:
 	${COMPIL} -c ${OPTION} ${OPTI} queens.cpp
+
+localsearch.o:
+	${COMPIL} -c ${OPTION} ${OPTI} localsearch.cpp
 
 
 clean:

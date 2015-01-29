@@ -18,17 +18,25 @@
 
 #pragma once
 
+#include <ctime>
+#include <tuple>
+
 #include "algorithm.hpp"
 
 namespace lslv {
 	class LocalSearch : public Algorithm {
-	public:
-		inline LocalSearch() {}
-		inline ~LocalSearch() {}
-		virtual int solve(Problem& p, Node& node);
-		
-	private:
-		void createInitialSol(Node& node);
-		void permutSol(Node& node);
+		public:
+			inline LocalSearch(int nb_iter) : m_MAX_ITER(nb_iter) {}
+			inline ~LocalSearch() {}
+			virtual int solve(Problem& p, Node& node);
+
+		private:
+			void createInitialSol(Node& node);
+			void permutSol(Node& node);
+			bool conflict(int x1, int x2, std::vector<int> const& assign) const;
+			std::tuple<std::vector<int>, int> count_conf(std::vector<int> const& assign) const;
+			std::vector<int> neighborhood(std::vector<int> const& assign) const;
+			const int m_MAX_ITER;
+
 	};
 };

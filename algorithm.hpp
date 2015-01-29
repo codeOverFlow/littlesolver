@@ -24,7 +24,5 @@ namespace lslv {
     class Algorithm {
         public:
             virtual int solve(Problem& p, Node& node) = 0;
-        protected:
-            virtual void branch(Problem& p, Node& node, std::vector<int> assignment, int& cpt, std::vector<int> not_assigned) = 0;
     };
 }

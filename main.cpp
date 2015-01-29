@@ -32,11 +32,13 @@ using namespace lslv;
  */
 int main ( int argc, char *argv[] )
 {
-    Queens q;
-    Backtracking b;
-    Solver s(q,b);
-    
-    std::cout << std::endl << s.solve("data/data") << " solution(s)" << std::endl;
+	Queens q;
+	//AssignProblem p;
+	//Backtracking b;
+	LocalSearch b(500000);
+	Solver s(q,b);
 
-    return EXIT_SUCCESS;
+	std::cout << std::endl << s.solve("data/data2") << " solution(s)" << std::endl;
+
+	return EXIT_SUCCESS;
 }				/* ----------  end of function main  ---------- */

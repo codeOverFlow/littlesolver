@@ -29,7 +29,6 @@ namespace lslv {
             inline ~Solver() {}
             
             inline int solve(std::string const& data_filename){
-		    std::cout << "bite" << std::endl; 
 		    Node n = m_problem.initialNode(data_filename);
                 return m_algo.solve(m_problem, n); 
             }

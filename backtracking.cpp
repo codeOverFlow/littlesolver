@@ -65,12 +65,12 @@ void Backtracking::branch(Problem& p, Node& node, std::vector<int> assignment, i
 	int min_size(node.dom().at(0).dom().size());
 
 	for (auto i : not_assigned) {
-		if (node.dom().at(i).positive_bits() < min_size) {
+		if (node.dom().at(i).positive_bits() <= min_size) {
 			d = i;
 			min_size = node.dom().at(i).positive_bits();
 		}
 	}
-
+	
 
 	std::vector<int> tmp;
 	//std::cout << "not_assigned: ";
@@ -81,7 +81,6 @@ void Backtracking::branch(Problem& p, Node& node, std::vector<int> assignment, i
 	}
 	//std::cout << std::endl << std::endl;
 	not_assigned  = tmp;
-
 	for (int i(0); i < node.dom().at(d).dom().size(); i++) {
 		if (node.dom().at(d).dom().at(i)) {
 			// push the new assignment

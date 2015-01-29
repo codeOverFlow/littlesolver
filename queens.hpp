@@ -18,6 +18,9 @@
 
 #pragma once
 
+#include <ctime>
+#include <cmath>
+
 #include "problem.hpp"
 
 namespace lslv {
@@ -32,12 +35,23 @@ namespace lslv {
 				file >> val;
 				int n = std::stoi(val);
 				Node node(n, n);
+				std::vector<int> storage;
+				
+				for (int i(0); i < n; i++)
+					storage.push_back(i);
+				
+				std::srand(std::time(NULL));
 				for (int i(0); i < n; i++) {
+					int rand = std::rand() % storage.size();
 					std::vector<bool> tmp_v;
-					for (int j(0); j < n; j++) {
-						tmp_v.push_back(true);
+					for(int k(0); k < n; k++) {
+						if (k == storage.at(rand))
+							tmp_v.push_back(true);
+						else
+							tmp_v.push_back(false);
 					}
 					node.addDom(Domain(n, tmp_v));
+					storage.erase(storage.begin()+rand);
 				}
 
 				return node;

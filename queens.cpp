@@ -5,7 +5,6 @@ using namespace lslv;
 Proof Queens::testSat(std::vector<int> const& assign, int n) const {
 	Proof sat = Proof::MIDDLE;
 	bool diff = all_diff(assign);
-	std::cout << "saotehusanotehuasonetuhas" << std::endl;
 	bool no_diag = check_diag(assign);
 	if (all_assign(assign, n) && diff && no_diag)
 		sat = Proof::SUCCESS;
