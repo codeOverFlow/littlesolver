@@ -41,12 +41,33 @@ namespace lslv {
 					storage.push_back(i);
 				
 				std::srand(std::time(NULL));
+				int pred(-1);
 				for (int i(0); i < n; i++) {
-					int rand = std::rand() % storage.size();
+					int rand;
+					
+					if (pred != -1) {
+						std::vector<int> storage_tmp;
+						for (int n(0); n < storage.size(); n++) {
+							if (storage.at(n) != pred+1 && storage.at(n) != pred-1)
+								storage_tmp.push_back(n);
+						}
+						
+						if (storage_tmp.size() != 0) {
+							rand = std::rand() % storage_tmp.size();
+							rand = storage_tmp.at(rand);
+						}
+						else
+							rand = std::rand() % storage.size();
+					}
+					else
+						rand = std::rand() % storage.size();
+
 					std::vector<bool> tmp_v;
 					for(int k(0); k < n; k++) {
-						if (k == storage.at(rand))
+						if (k == storage.at(rand)) {
 							tmp_v.push_back(true);
+							pred = k;
+						}
 						else
 							tmp_v.push_back(false);
 					}

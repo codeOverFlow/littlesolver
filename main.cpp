@@ -35,10 +35,11 @@ int main ( int argc, char *argv[] )
 	Queens q;
 	//AssignProblem p;
 	//Backtracking b;
-	LocalSearch b(500000);
+	LocalSearch b(300);
 	Solver s(q,b);
 
-	std::cout << std::endl << s.solve("data/data2") << " solution(s)" << std::endl;
-
+	for (int n(0); n < 100000; n++)
+		s.solve("data/data2");
+	std::cout << std::endl;
 	return EXIT_SUCCESS;
 }				/* ----------  end of function main  ---------- */
